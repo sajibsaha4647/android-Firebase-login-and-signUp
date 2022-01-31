@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -100,7 +102,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                     startActivity(intent);
                                     Toast.makeText(SignupActivity.this,"Registration Successfull",Toast.LENGTH_LONG).show();
                                 } else {
-                                    Toast.makeText(SignupActivity.this,"Registration Failed",Toast.LENGTH_LONG).show();
+                                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                                        Toast.makeText(SignupActivity.this,"User already exist",Toast.LENGTH_LONG).show();
+                                    }else{
+                                        Toast.makeText(SignupActivity.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                                    }
+
                                 }
                             }
                         });

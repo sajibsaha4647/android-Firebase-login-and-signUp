@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 if (task.isSuccessful()) {
                                     Intent intent = new Intent(getApplicationContext(),DeshboardActivity.class);
                                     startActivity(intent);
+                                    finish();
                                     Toast.makeText(MainActivity.this,"Login Successfull",Toast.LENGTH_LONG).show();
                                 } else {
                                     Toast.makeText(MainActivity.this,"Email or password did not match !",Toast.LENGTH_LONG).show();
