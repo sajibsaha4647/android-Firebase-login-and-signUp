@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLoginFirebase">
         <activity
+            android:name=".Activities.DeshboardActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activities.SignupActivity"
             android:exported="true" />
         <activity
